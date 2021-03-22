@@ -8,9 +8,8 @@
   text-decoration: none;
   display: inline-block;
   font-size: 18px;
-  width: 358px;
-  height: 50px;
+  width: 100%;
+  min-height: 50px;
   border-radius: 2px;
   cursor: pointer;
 }
-
