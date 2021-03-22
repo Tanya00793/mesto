@@ -33,32 +33,6 @@ popupSubmitBtn.addEventListener('click', function() {
   closePopup();
 });
 
-//-------------------------------------------------------------
-
-
-const targetButtons = document.querySelectorAll('.like-button');
-
-function likePhoto () {
-  like-button.classList.add('.like-button_active');
-}
-
-function unlikePhoto () {
-  like-button.classList.remove('.like-button_active');
-}
-
-function likeClick(event) {
-  likePhoto();
-}
-
-for (let i = 0; i < targetButtons.length; i++) {
-  const currentButton = targetButtons[i];
-  currentButton.addEventListener('click', likeClick);
-}
-
-targetButtons.addEventListener('click', function(event) {
-  likePhoto();
-});
-
 //---------------------------------------------------------------
 
 // Находим форму в DOM
