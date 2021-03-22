@@ -7,13 +7,13 @@
 @media screen and (max-width: 1023px) {
   .profile__info-column {
     margin: 0 auto 36px;
+    flex-flow: column nowrap;
     width: 100%;
   }
 }
 
 @media screen and (max-width: 424px) {
   .profile__info-column {
-    flex-flow: column nowrap;
     align-content: center;
   }
 }

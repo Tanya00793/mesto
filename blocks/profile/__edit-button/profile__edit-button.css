@@ -1,7 +1,6 @@
 .profile__edit-button {
   margin: 15px 0 34px 18px;
   padding: 0;
-  position: relative;
   min-width: 24px;
   min-height: 24px;
   background: url("../../../images/__edit-button.svg") no-repeat center;
@@ -13,6 +12,6 @@
   .profile__edit-button {
     margin: 8px 0 28px 19px;
     min-width: 18px;
-    max-height: 18px;
+    min-height: 18px;
   }
 }
