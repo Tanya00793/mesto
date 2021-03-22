@@ -1,0 +1,4 @@
+.photo-grid__title-and-link {
+  display: flex;
+  justify-content: space-between;
+}

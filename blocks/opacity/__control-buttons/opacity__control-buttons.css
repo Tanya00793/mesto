@@ -1,0 +1,7 @@
+.opacity__control-buttons {
+  transition: opacity .20s ease;
+}
+
+.opacity__control-buttons:hover {
+  opacity: .6;
+}

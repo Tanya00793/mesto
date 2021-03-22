@@ -1,0 +1,28 @@
+.popup__close-button {
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: -50px;
+  right: -40px;
+  color: #fff;
+  font-size: 58px;
+  font-weight: 100;
+  transform: rotate(45deg);
+  text-decoration: none;
+}
+
+@media screen and (max-width: 767px) {
+  .popup__close-button {
+    top: -40px;
+    right: -30px;
+    font-size: 42px;
+  }
+}
+
+@media screen and (max-width: 424px) {
+  .popup__close-button {
+    top: -30px;
+    right: -20px;
+    font-size: 30px;
+  }
+}

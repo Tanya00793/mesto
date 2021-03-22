@@ -1,0 +1,30 @@
+.page-container {
+  margin: 45px 200px 60px;
+  max-width: calc(100% - 200px*2);
+}
+
+@media screen and (max-width: 1279px) {
+    .page-container {
+      max-width: calc(100% - 150px*2);
+    }
+  }
+  
+  @media screen and (max-width: 1023px) {
+    .page-container {
+      max-width: calc(100% - 100px*2);
+    }
+  }
+  
+  @media screen and (max-width: 767px) {
+    .page-container {
+      margin: 45px 50px 60px;
+      max-width: calc(100% - 50px*2);
+    }
+  }
+  
+  @media screen and (max-width: 424px) {
+    .page-container {
+      margin: 45px 19px 36px;
+      max-width: calc(100% - 19px*2);
+    }
+  }

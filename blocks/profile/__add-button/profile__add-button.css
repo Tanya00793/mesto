@@ -1,0 +1,18 @@
+.profile__add-button {
+  margin: 35px 0;
+  padding: 0;
+  position: relative;
+  min-width: 150px;
+  min-height: 50px;
+  background: url("../../../images/__add-button.svg") no-repeat center;
+  border: 2px solid #fff;
+  box-sizing: border-box;
+  border-radius: 2px;
+}
+
+@media screen and (max-width: 1023px) {
+  .profile__add-button {
+    margin: 0;
+    max-width: 100%;
+  }
+}

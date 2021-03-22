@@ -1,0 +1,7 @@
+.opacity__like-buttons {
+  transition: opacity .20s ease;
+}
+
+.opacity__like-buttons:hover {
+  opacity: .5;
+}
