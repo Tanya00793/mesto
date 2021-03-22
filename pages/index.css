@@ -1,7 +1,7 @@
 @import url(../vendor/normalize.css);
 @import url(../vendor/fonts/fonts.css);
 
-@import url(../blocks/opacity/__control-buttons/opacity__control-buttons.css);
+@import url(../blocks/opacity-control-button/opacity-control-button.css);
 
 @import url(../blocks/page/page.css);
 @import url(../blocks/page-container/page-container.css);
@@ -31,8 +31,7 @@
 @import url(../blocks/popup/__text/popup__text.css);
 @import url(../blocks/popup/__line/popup__line.css);
 @import url(../blocks/popup/__submit-button/popup__submit-button.css);
-
-@import url(../blocks/opacity/__submit-button/opacity__submit-button.css);
+@import url(../blocks/opacity-submit-button/opacity-submit-button.css);
 
 @import url(../blocks/photo-grid/photo-grid.css);
 @import url(../blocks/photo-grid/__element/photo-grid__element.css);
@@ -42,6 +41,7 @@
 @import url(../blocks/photo-grid/__text-container/photo-grid__text-container.css);
 
 @import url(../blocks/like-button/like-button.css);
+@import url(../blocks/opacity-like-button/opacity__like-button.css);
 
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);
