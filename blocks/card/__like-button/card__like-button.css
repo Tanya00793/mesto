@@ -1,4 +1,4 @@
-.photo-grid__like-button {
+.card__like-button {
   margin: 0;
   padding: 0;
   position: relative;
@@ -13,6 +13,6 @@
   opacity: 1;
 }
 
-.photo-grid__like-button:active {
+.card__like-button:active {
   background: url("../../../images/__like-button-active.svg") no-repeat center;
 }

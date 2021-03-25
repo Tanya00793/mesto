@@ -1,5 +1,24 @@
-.profile__avatar {
-  margin: 0 auto;
+.profile__avatar { 
+  margin: 0 20.6px 0 0;
+  max-width: 127.5px;
+  height: 127.5px;
+  width: 100%;
+  background: url('../../../images/__avatar.png') center no-repeat;
   border-radius: 50%;
-  max-height: 120px;
+} 
+
+@media screen and (max-width: 1023px) { 
+  .profile__avatar { 
+    margin: 0 auto; 
+    height: 167.5px; 
+    max-width: 208.75px;
+    background-size: contain;
+  } 
 }
+
+@media screen and (max-width: 424px) { 
+  .profile__avatar{ 
+    max-width: 168.75px;
+    height: 127.5px; 
+  } 
+} 

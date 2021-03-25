@@ -8,6 +8,7 @@
   border: 2px solid #fff;
   box-sizing: border-box;
   border-radius: 2px;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 1023px) {

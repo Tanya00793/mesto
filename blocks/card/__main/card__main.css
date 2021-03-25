@@ -1,4 +1,4 @@
-.photo-grid__title-and-link {
+.card__main {
   display: flex;
   justify-content: space-between;
 }

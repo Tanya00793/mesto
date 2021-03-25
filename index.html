@@ -3,109 +3,90 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mesto</title>
+    <title>Место</title>
     <link rel="stylesheet" href="./pages/index.css">
-    <script src="./scripts/index.js" defer></script>
   </head>
   <body class="page">
-    <div class="popup">
-      <div class="popup__overlay"></div>
-      <div class="popup__content">
-        <a class="popup__close-button opacity-control-button" href="#" target="_self"></a>
-        <h2 class="popup__title">Редактировать профиль</h2>
-        <form class="popup__form">
-          <input class="popup__text" type="text" value="Жак-Ив Кусто" id="nameInput">
-          <hr class="popup__line">
-          <input class="popup__text" type="text" value="Исследователь океана" id="jobInput">
-          <hr class="popup__line">
-          <button class="popup__submit-button opacity-submit-button" type="submit">Сохранить</button>
-        </form>
-      </div>
-    </div>
     <div class="page-container">
       <header class="header">
-        <figure class="header__logo-container">
-          <img class="header__logo" src="images/__logo.svg" alt="логотип mesto russia">
-          <hr class="header__line">
-        </figure>
+        <img class="header__logo" src="images/__logo.svg" alt="логотип mesto russia">
       </header>
       <main class="content">
         <section class="profile">
-          <div class="profile__info-column">
-            <figure class="profile__avatar-container">
-              <img class="profile__avatar" src="images/__avatar.jpg" alt="аватар пользователя">
-            </figure>
+          <div class="profile__info-column"> 
+            <div class="profile__avatar"></div> 
             <div class="profile__info-container">
               <div class="profile__user-data-container">
                 <h1 class="profile__name">Жак-Ив Кусто</h1>
-                <p class="profile__subtext">Исследователь океана</p>
+                <p class="profile__profession">Исследователь океана</p>
               </div>
-                <a class="profile__edit-button opacity-control-button" href="#" target="_self" 
-                id="open_popup_btn"></a>
+                <button class="profile__edit-button opacity-control-button" type="button"></button>
             </div>
           </div>
-          <a class="profile__add-button opacity-control-button" href="#" target="_self"></a>
+          <button class="profile__add-button opacity-control-button" type="button"></button>
         </section>
         <section class="photo-grid">
-          <figure class="photo-grid__element">
-            <img class="photo-grid__image" src="images/__karachaevsk.jpg" alt="Карачаевск">
-            <div class="photo-grid__title-and-link">
-              <div class="photo-grid__text-container">
-                <p class="photo-grid__text">Карачаевск</p>
-              </div>
-              <a class="photo-grid__like-button opacity-like-button" href="#" target="_self"></a>
+          <article class="card">
+            <img class="card__image" src="images/__karachaevsk.jpg" alt="Карачаевск">
+            <div class="card__main">
+              <h2 class="card__header">Карачаевск</h2>
+              <button class="card__like-button opacity-control-button_like" type="button"></button>
             </div>
-          </figure>
-          <figure class="photo-grid__element">
-            <img class="photo-grid__image" src="images/__elbrus.jpg" alt="Гора Эльбрус">
-            <div class="photo-grid__title-and-link">
-              <div class="photo-grid__text-container">
-                <p class="photo-grid__text">Гора Эльбрус</p>
-              </div>
-              <a class="photo-grid__like-button opacity-like-button" href="#" target="_self"></a>
+          </article>
+          <article class="card">
+            <img class="card__image" src="images/__elbrus.jpg" alt="Гора Эльбрус">
+            <div class="card__main">
+              <h2 class="card__header">Гора Эльбрус</h2>
+              <button class="card__like-button opacity-control-button_like" type="button"></button>
             </div>
-          </figure>
-          <figure class="photo-grid__element">
-            <img class="photo-grid__image" src="images/__dombay.jpg" alt="Домбай">
-            <div class="photo-grid__title-and-link">
-              <div class="photo-grid__text-container">
-                <p class="photo-grid__text">Домбай</p>
-              </div>
-              <a class="photo-grid__like-button opacity-like-button" href="#" target="_self"></a>
+          </article>
+          <article class="card">
+            <img class="card__image" src="images/__dombay.jpg" alt="Домбай">
+            <div class="card__main">
+              <h2 class="card__header">Домбай</h2>
+              <button class="card__like-button opacity-control-button_like" type="button"></button>
             </div>
-          </figure>
-          <figure class="photo-grid__element">
-            <img class="photo-grid__image" src="images/__elbrus.jpg" alt="Гора Эльбрус">
-            <div class="photo-grid__title-and-link">
-              <div class="photo-grid__text-container">
-                <p class="photo-grid__text">Гора Эльбрус</p>
-              </div>
-              <a class="photo-grid__like-button opacity-like-button" href="#" target="_self"></a>
+          </article>
+          <article class="card">
+            <img class="card__image" src="images/__elbrus.jpg" alt="Гора Эльбрус">
+            <div class="card__main">
+              <h2 class="card__header">Гора Эльбрус</h2>
+              <button class="card__like-button opacity-control-button_like" type="button"></button>
             </div>
-          </figure>
-          <figure class="photo-grid__element">
-            <img class="photo-grid__image" src="images/__dombay.jpg" alt="Домбай">
-            <div class="photo-grid__title-and-link">
-              <div class="photo-grid__text-container">
-                <p class="photo-grid__text">Домбай</p>
-              </div>
-              <a class="photo-grid__like-button opacity-like-button" href="#" target="_self"></a>
+          </article>
+          <article class="card">
+            <img class="card__image" src="images/__dombay.jpg" alt="Домбай">
+            <div class="card__main">
+              <h2 class="card__header">Домбай</h2>
+              <button class="card__like-button opacity-control-button_like" type="button"></button>
             </div>
-          </figure>
-          <figure class="photo-grid__element">
-            <img class="photo-grid__image" src="images/__karachaevsk.jpg" alt="Карачаево-Черкесия">
-            <div class="photo-grid__title-and-link">
-              <div class="photo-grid__text-container">
-                <p class="photo-grid__text">Карачаево-Черкесия</p>
-              </div>
-              <a class="photo-grid__like-button opacity-like-button" href="#" target="_self"></a>
+          </article>
+          <article class="card">
+            <img class="card__image" src="images/__karachaevsk.jpg" alt="Карачаево-Черкесия">
+            <div class="card__main">
+              <h2 class="card__header">Карачаево-Черкесия</h2>
+              <button class="card__like-button opacity-control-button_like" type="button"></button>
             </div>
-          </figure>
+          </article>
       </section>
       </main>
       <footer class="footer">
         <p class="footer__copyright">&copy;2021 Mesto Russia</p>
       </footer>
     </div>
+    <div class="popup">
+      <div class="popup__content">
+        <button class="popup__close-button opacity-control-button" type="button"></button>
+        <h2 class="popup__title">Редактировать профиль</h2>
+        <form class="popup__form" name="popupForm">
+          <input class="popup__text" type="text" value="" id="nameInput" name="name" 
+            placeholder="Имя" required>
+          <input class="popup__text" type="text" value="" id="professionInput" name="profession" 
+            placeholder="Профессия" required>
+          <button class="popup__submit-button opacity-control-button_submit" type="submit">Сохранить</button>
+        </form>
+      </div>
+    </div>
+  <script src="./scripts/index.js"></script>
   </body>
 </html>
