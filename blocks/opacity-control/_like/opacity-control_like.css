@@ -1,0 +1,7 @@
+.opacity-control_like {
+  transition: opacity .20s ease;
+}
+
+.opacity-control_like:hover {
+  opacity: .5;
+}
