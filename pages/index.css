@@ -1,9 +1,9 @@
 @import url(../vendor/normalize.css);
 @import url(../vendor/fonts/fonts.css);
 
-@import url(../blocks/opacity-control-button/opacity-control-button.css);
-@import url(../blocks/opacity-control-button/__like/opacity-control-button__like.css);
-@import url(../blocks/opacity-control-button/__submit/opacity-control-button__submit.css);
+@import url(../blocks/opacity/_control/opacity_control.css);
+@import url(../blocks/opacity/_submit/opacity_submit.css);
+@import url(../blocks/opacity/_like/opacity_like.css);
 
 @import url(../blocks/page/page.css);
 @import url(../blocks/page-container/page-container.css);

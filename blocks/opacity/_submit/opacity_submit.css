@@ -1,0 +1,7 @@
+.opacity_submit {
+  transition: opacity .20s ease;
+}
+
+.opacity_submit:hover {
+  opacity: .8;
+}
