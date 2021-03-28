@@ -20,52 +20,52 @@
                 <h1 class="profile__name">Жак-Ив Кусто</h1>
                 <p class="profile__profession">Исследователь океана</p>
               </div>
-                <button class="profile__edit-button opacity-control" type="button"></button>
+                <button class="profile__edit-button opacity-transition" type="button" aria-label="Редактировать"></button>
             </div>
           </div>
-          <button class="profile__add-button opacity-control" type="button"></button>
+          <button class="profile__add-button opacity-transition" type="button" aria-label="Добавить"></button>
         </section>
         <section class="photo-grid">
           <article class="card">
             <img class="card__image" src="images/__karachaevsk.jpg" alt="Карачаевск">
             <div class="card__main">
               <h2 class="card__header">Карачаевск</h2>
-              <button class="card__like-button opacity-like" type="button"></button>
+              <button class="card__like-button opacity-transition" type="button" aria-label="Оценить"></button>
             </div>
           </article>
           <article class="card">
             <img class="card__image" src="images/__elbrus.jpg" alt="Гора Эльбрус">
             <div class="card__main">
               <h2 class="card__header">Гора Эльбрус</h2>
-              <button class="card__like-button opacity-like" type="button"></button>
+              <button class="card__like-button opacity-transition" type="button" aria-label="Оценить"></button>
             </div>
           </article>
           <article class="card">
             <img class="card__image" src="images/__dombay.jpg" alt="Домбай">
             <div class="card__main">
               <h2 class="card__header">Домбай</h2>
-              <button class="card__like-button opacity-like" type="button"></button>
+              <button class="card__like-button opacity-transition" type="button" aria-label="Оценить"></button>
             </div>
           </article>
           <article class="card">
             <img class="card__image" src="images/__elbrus.jpg" alt="Гора Эльбрус">
             <div class="card__main">
               <h2 class="card__header">Гора Эльбрус</h2>
-              <button class="card__like-button opacity-like" type="button"></button>
+              <button class="card__like-button opacity-transition" type="button" aria-label="Оценить"></button>
             </div>
           </article>
           <article class="card">
             <img class="card__image" src="images/__dombay.jpg" alt="Домбай">
             <div class="card__main">
               <h2 class="card__header">Домбай</h2>
-              <button class="card__like-button opacity-like" type="button"></button>
+              <button class="card__like-button opacity-transition" type="button" aria-label="Оценить"></button>
             </div>
           </article>
           <article class="card">
             <img class="card__image" src="images/__karachaevsk.jpg" alt="Карачаево-Черкесия">
             <div class="card__main">
               <h2 class="card__header">Карачаево-Черкесия</h2>
-              <button class="card__like-button opacity-like" type="button"></button>
+              <button class="card__like-button opacity-transition" type="button" aria-label="Оценить"></button>
             </div>
           </article>
       </section>
@@ -76,16 +76,14 @@
     </div>
     <div class="popup">
       <div class="popup__content">
-        <button class="popup__close-button opacity-control" type="button"></button>
+        <button class="popup__close-button opacity-transition" type="button" aria-label="Закрыть"></button>
         <h2 class="popup__title">Редактировать профиль</h2>
-        <form class="popup__form" name="popupForm">
+        <form class="popup__form" name="editProfileForm">
           <input class="popup__text" type="text" value="" id="nameInput" name="name" 
             placeholder="Имя" required>
           <input class="popup__text" type="text" value="" id="professionInput" name="profession" 
             placeholder="Профессия" required>
-          <button class="popup__submit-button opacity-submit" type="submit">Сохранить</button>
-<!-- К сожалению, автотесты не пропускают никакие мои исправления по данному классу, в связи с чем,
-   оставила его отдельным блоком -->
+          <button class="popup__submit-button opacity-transition" type="submit">Сохранить</button>
         </form>
       </div>
     </div>

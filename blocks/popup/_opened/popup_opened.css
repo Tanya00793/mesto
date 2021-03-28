@@ -3,8 +3,3 @@
   justify-content: center;
 }
 
-@media screen and (max-width: 1023px) {
-  .popup_opened {
-    margin: 0 19px;
-  }
-}

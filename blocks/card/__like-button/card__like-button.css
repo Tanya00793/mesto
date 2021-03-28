@@ -1,9 +1,6 @@
 .card__like-button {
-  margin: 0;
+  margin: 0 5px 0 0;
   padding: 0;
-  position: relative;
-  top: 30px;
-  right: 20px;
   background: url("../../../images/__like-button-disabled.svg") no-repeat center;
   border: none;
   display: inline-block;
@@ -15,4 +12,8 @@
 
 .card__like-button:active {
   background: url("../../../images/__like-button-active.svg") no-repeat center;
+}
+
+.card__like-button:hover {
+  opacity: .6;
 }

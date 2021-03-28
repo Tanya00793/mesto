@@ -17,6 +17,5 @@
   .profile__info-container {
     flex-direction: row;
     justify-content: center;
-    max-height: 54px;
   }
 }

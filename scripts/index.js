@@ -2,30 +2,26 @@ const popup = document.querySelector('.popup');
 const openPopupBtn = document.querySelector('.profile__edit-button');
 const closePopupBtn = document.querySelector('.popup__close-button');
 
-const popupTitle = document.querySelector('.popup__title');
-const popupText = document.querySelector('.popup__text');
-const popupTitleContent = popupTitle.textContent;
-const popupTextContent = popupText.textContent;
-
 // Находим форму в DOM
-let formElement = document.forms['popupForm'];
+const formElement = document.forms['editProfileForm'];
 
 // Находим поля формы в DOM
 
-let nameInput = formElement.querySelector('#nameInput');
-let professionInput = formElement.querySelector('#professionInput');
+const nameInput = formElement.querySelector('#nameInput');
+const professionInput = formElement.querySelector('#professionInput');
   
 // Выбераем элементы, куда должны быть вставлены значения полей
 
-let profileName = document.querySelector('.profile__name');
-let profileProfession = document.querySelector('.profile__profession');
+const profileName = document.querySelector('.profile__name');
+const profileProfession = document.querySelector('.profile__profession');
 
 
 //---------------------------------------------------------------
 
-function openPopup (title, text) {
-  popupTitle.textContent = title;
-  popupText.textContent = text;
+function openPopup () {
+  
+  nameInput.value = profileName.textContent;
+  professionInput.value = profileProfession.textContent;
   popup.classList.add('popup_opened');
 }
 
@@ -42,19 +38,16 @@ function formSubmitHandler (evt) {
 
                         // Получаем значение полей из свойства value
 
-  let newProfileName = nameInput.value;
-  let newProfileProfession = professionInput.value;
-
   // Вставьте новые значения с помощью textContent
   
-  profileName.textContent = newProfileName;
-  profileProfession.textContent = newProfileProfession;
+  profileName.textContent = nameInput.value;
+  profileProfession.textContent = professionInput.value;
   closePopup();
 }
 
 
 openPopupBtn.addEventListener('click', function(Event) {
-  openPopup(popupTextContent, popupTextContent);
+  openPopup();
 });
 
 closePopupBtn.addEventListener('click', closePopup);

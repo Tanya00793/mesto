@@ -1,9 +1,7 @@
 @import url(../vendor/normalize.css);
 @import url(../vendor/fonts/fonts.css);
 
-@import url(../blocks/opacity-control/opacity-control.css);
-@import url(../blocks/opacity-like/opacity-like.css);
-@import url(../blocks/opacity-submit/opacity-submit.css);
+@import url(../blocks/opacity-transition/opacity-transition.css);
 
 @import url(../blocks/page/page.css);
 @import url(../blocks/page-container/page-container.css);
