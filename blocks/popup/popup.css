@@ -8,9 +8,3 @@
   box-sizing: border-box;
   display: none;
 }
-
-@media screen and (max-width: 1023px) {
-  .popup {
-    margin: 0 19px;
-  }
-}

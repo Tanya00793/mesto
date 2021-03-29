@@ -46,9 +46,7 @@ function formSubmitHandler (evt) {
 }
 
 
-openPopupBtn.addEventListener('click', function(Event) {
-  openPopup();
-});
+openPopupBtn.addEventListener('click', openPopup);
 
 closePopupBtn.addEventListener('click', closePopup);
 
