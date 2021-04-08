@@ -1,4 +1,4 @@
-.popup__text {
+.edit-profile-modal__text {
   margin: 0 auto 30px;
   padding-bottom: 13px;
   width: 100%;
@@ -13,7 +13,7 @@
 }
 
 @media screen and (max-width: 424px) {
-  .popup__text {
+  .edit-profile-modal__text {
     font-size: 12px;
   }
 }

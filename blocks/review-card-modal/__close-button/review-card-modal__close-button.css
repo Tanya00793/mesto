@@ -1,4 +1,4 @@
-.popup__close-button {
+.review-card-modal__close-button {
   margin: 0;
   padding: 0;
   position: absolute;
@@ -8,21 +8,19 @@
   max-width: 40px;
   width: 100%;
   min-height: 40px;
-  color: #fff;
   background: url("../../../images/__add-button.svg") no-repeat center;
   background-size: cover;
   transform: rotate(45deg);
-  text-decoration: none;
   border: none;
   cursor: pointer;
 }
 
-.popup__close-button:hover {
+.review-card-modal__close-button:hover {
   opacity: .6;
 }
 
-@media screen and (max-width: 1023px) {
-  .popup__close-button {
+@media screen and (max-width: 424px) {
+  .review-card-modal__close-button {
     top: -39.62px;
     right: 0px;
     max-width: 26px;
