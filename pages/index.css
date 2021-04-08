@@ -40,6 +40,7 @@
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);
 
+@import url(../blocks/modal-preview-card/modal-preview-card.css);
 @import url(../blocks/modal-preview-card/__content/modal-preview-card__content.css);
 @import url(../blocks/modal-preview-card/__image/modal-preview-card__image.css);
 @import url(../blocks/modal-preview-card/__title/modal-preview-card__title.css);
