@@ -38,7 +38,7 @@ function initialCard(titleValue, linkValue) {
   cardPreviewImage.addEventListener('click', function(){
     openModal(modalPreviewCard);
     const modalPreviewCardImage = document.querySelector('.modal-preview-card__image');
-    modalPreviewCardImage.src = cardReviewImage.src; 
+    modalPreviewCardImage.src = cardPreviewImage.src; 
     const previewCardPlaceTitle = document.querySelector('.modal-preview-card__title');
     previewCardPlaceTitle.textContent = card.querySelector('.card__title').textContent;
   });
