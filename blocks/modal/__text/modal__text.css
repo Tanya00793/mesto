@@ -1,4 +1,4 @@
-.edit-profile-modal__text {
+.modal__text {
   margin: 0 auto 30px;
   padding-bottom: 13px;
   width: 100%;
@@ -13,7 +13,7 @@
 }
 
 @media screen and (max-width: 424px) {
-  .edit-profile-modal__text {
+  .modal__text {
     font-size: 12px;
   }
 }

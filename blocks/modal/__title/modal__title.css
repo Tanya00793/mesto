@@ -1,4 +1,4 @@
-.edit-profile-modal__title {
+.modal__title {
   margin: 0 0 54px 0;
   min-height: 23px;
   color: #000;
@@ -8,14 +8,14 @@
 }
 
 @media screen and (max-width: 767px) {
-  .edit-profile-modal__title {
+  .modal__title {
     min-height: 22px;
     font-size: 30px;
   }
 }
 
 @media screen and (max-width: 424px) {
-  .edit-profile-modal__title {
+  .modal__title {
     font-size: 18px;
   }
 }

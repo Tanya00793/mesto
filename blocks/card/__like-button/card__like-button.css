@@ -10,10 +10,6 @@
   opacity: 1;
 }
 
-.card__like-button:active {
-  background: url("../../../images/__like-button-active.svg") no-repeat center;
-}
-
 .card__like-button:hover {
   opacity: .5;
 }

@@ -1,4 +1,4 @@
-.review-card-modal__close-button {
+.modal__close-button {
   margin: 0;
   padding: 0;
   position: absolute;
@@ -15,12 +15,12 @@
   cursor: pointer;
 }
 
-.review-card-modal__close-button:hover {
+.modal__close-button:hover {
   opacity: .6;
 }
 
 @media screen and (max-width: 424px) {
-  .review-card-modal__close-button {
+  .modal__close-button {
     top: -39.62px;
     right: 0px;
     max-width: 26px;

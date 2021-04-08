@@ -1,4 +1,4 @@
-.edit-profile-modal__submit-button {
+.modal__submit-button {
   margin: 14px auto 0;
   padding: 15px 32px;
   background-color: #000;
@@ -14,12 +14,12 @@
   cursor: pointer;
 }
 
-.edit-profile-modal__submit-button:hover {
+.modal__submit-button:hover {
   opacity: .8;
 }
 
 @media screen and (max-width: 424px) {
-  .edit-profile-modal__submit-button {
+  .modal__submit-button {
     font-size: 14px;
   }
 }
