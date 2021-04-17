@@ -25,6 +25,14 @@ const placeLinkInput = modalAddCardForm.querySelector('#placeLinkInput');
 const profileName = document.querySelector('.profile__name');
 const profileProfession = document.querySelector('.profile__profession');
 
+const vConfig = {
+  formSelector: '.form',
+  inputSelector: '.form__input',
+  submitButtonSelector: '.form__submit-button',
+  inactiveButtonClass: '.form__submit-button_disabled',
+  inputErrorClass: '.form__input-error',
+  errorClass: '.form__input-error_active',
+};
 
 //---------------------------------------------------------------
 
@@ -33,7 +41,7 @@ function initialCard(titleValue, linkValue) {
   const card = cardTemplate.cloneNode(true);
   card.querySelector('.card__title').textContent = titleValue;
   card.querySelector('.card__image').src = linkValue;
-  card.querySelector('.card__title').alt = titleValue;
+  card.querySelector('.card__image').alt = titleValue;
   const cardPreviewImage = card.querySelector('.card__image');
   cardPreviewImage.addEventListener('click', function(){
     openModal(modalPreviewCard);
@@ -53,15 +61,24 @@ function initialCard(titleValue, linkValue) {
   return(card);
 };
 
-
 function openModal (modal) {
   modal.classList.add('modal_opened');
+  window.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      closeModal(modal);
+    };
+  });
 };
 
-function closeModal (modal) {
+function buttonDisabled(modal) {
+  const formSubmitBtn = modal.querySelector('.form__submit-button');
+  formSubmitBtn.classList.add('form__submit-button_disabled');
+  formSubmitBtn.setAttribute('disabled', true);
+};
+
+function closeModal(modal) {
   modal.classList.remove('modal_opened');
 };
-
 
 const modalProfileEditSubmitHandler = e => {
 	e.preventDefault(); 
@@ -80,19 +97,46 @@ const modalAddCardSubmitHandler = e => {
   modalAddCardForm.reset();
 };
 
-
 //---------------------------------------------------------------
 
-modalEditProfileOpenBtn.addEventListener('click', ()=> {
+modalEditProfileOpenBtn.addEventListener('click', () => {
+  openModal(modalEditProfile);
+  buttonDisabled(modal);
   nameInput.value = profileName.textContent;
   professionInput.value = profileProfession.textContent;
-  openModal(modalEditProfile);
 });
 modalEditProfileCloseBtn.addEventListener('click', () => closeModal(modalEditProfile));
 modalEditProfileForm.addEventListener('submit', modalProfileEditSubmitHandler);
 
-modalAddCardOpenBtn.addEventListener('click', () => openModal(modalAddCard));
+modalAddCardOpenBtn.addEventListener('click', () => {
+  openModal(modalAddCard);
+  buttonDisabled(modalAddCard);
+  placeTitleInput.value = "";
+  placeLinkInput.value = "";
+});
 modalAddCardCloseBtn.addEventListener('click', () => closeModal(modalAddCard));
 modalAddCardForm.addEventListener('submit', modalAddCardSubmitHandler);
 
 modalPeviewCardCloseBtn.addEventListener('click', () => closeModal(modalPreviewCard));
+
+modalEditProfileForm.addEventListener('submit', function (evt) {
+  evt.preventDefault();
+});
+
+modalEditProfile.addEventListener('click', (e) => {
+  if (e.target === e.currentTarget) {
+    closeModal(modalEditProfile);
+  };
+});
+
+modalAddCard.addEventListener('click', (e) => {
+  if (e.target === e.currentTarget) {
+    closeModal(modalAddCard);
+  };
+});
+
+modalPreviewCard.addEventListener('click', (e) => {
+  if (e.target === e.currentTarget) {
+    closeModal(modalPreviewCard);
+  };
+});

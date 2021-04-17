@@ -41,41 +41,57 @@
       <footer class="footer">
         <p class="footer__copyright">&copy;2021 Mesto Russia</p>
       </footer>
+      <section class="modal modal-edit-profile">
+        <div class="modal__content">
+          <button class="modal__close-button modal-edit-profile__close-button opacity-transition" 
+            type="button" aria-label="Закрыть"></button>
+          <h2 class="modal__title">Редактировать профиль</h2>
+          <form class="form" action="#" name="modalEditProfileForm" novalidate autocomplete="off">
+            <section class="form__section">
+              <input class="form__input" value="" id="nameInput" name="nameInput" 
+                type="text" placeholder="Имя" minlength="2" maxlength="40" required>
+              <span class="form__input-error"></span>
+            </section> 
+            <section class="form__section">
+              <input class="form__input" value="" id="professionInput" name="professionInput"
+                type="text"  placeholder="Профессия" minlength="2" maxlength="200" required>
+              <span class="form__input-error" id="professionInputError"></span>
+            </section>
+            <button class="form__submit-button opacity-transition"   
+              type="submit">Сохранить</button>
+          </form>
+        </div>
+      </section>
+      <section class="modal modal-add-card">
+        <div class="modal__content">
+          <button class="modal__close-button modal-add-card__close-button opacity-transition" type="button" 
+            aria-label="Закрыть"></button>
+          <h2 class="modal__title">Новое место</h2>
+          <form class="form" action="#" name="addCardForm" novalidate autocomplete="off">
+            <section class="form__section">
+              <input class="form__input" type="text" value="" id="placeTitleInput" name="placeTitleInput" 
+                placeholder="Название" minlength="1" maxlength="30" required>
+              <span class="form__input-error" id="placeTitleInputError"></span>
+            </section>
+            <section class="form__section">
+              <input class="form__input" type="url" value="" id="placeLinkInput" name="placeLinkInput" 
+                placeholder="Ссылка" minlength="0" required>
+              <span class="form__input-error" id="placeLinkInputError"></span>
+            </section>
+            <button class="form__submit-button opacity-transition" type="submit">Сохранить</button>
+          </form>
+        </div>
+      </section>
+      <section class="modal modal-preview-card">
+        <div class="modal-preview-card__content">
+          <button class="modal__close-button modal-preview-card__close-button opacity-transition" type="button" aria-label="Закрыть"></button>
+          <img class="modal-preview-card__image" src="images/__dombay.jpg" alt="Название места">
+          <h2 class="modal-preview-card__title">Название места</h2>
+        </div>
+      </section>
     </div>
-    <div class="modal modal-edit-profile">
-      <div class="modal__content">
-        <button class="modal__close-button modal-edit-profile__close-button opacity-transition" type="button" aria-label="Закрыть"></button>
-        <h2 class="modal__title">Редактировать профиль</h2>
-        <form class="modal__form" name="modalEditProfileForm">
-          <input class="modal__text" type="text" value="" id="nameInput" name="name" 
-            placeholder="Имя" required>
-          <input class="modal__text" type="text" value="" id="professionInput" name="profession" 
-            placeholder="Профессия" required>
-          <button class="modal__submit-button modal-edit-profile__submit-button opacity-transition" type="submit">Сохранить</button>
-        </form>
-      </div>
-    </div>
-    <div class="modal modal-add-card">
-      <div class="modal__content">
-        <button class="modal__close-button modal-add-card__close-button opacity-transition" type="button" aria-label="Закрыть"></button>
-        <h2 class="modal__title">Новое место</h2>
-        <form class="modal__form" name="addCardForm">
-          <input class="modal__text" type="text" value="" id="placeTitleInput" name="placeTitleInput" 
-            placeholder="Название" required>
-          <input class="modal__text" type="text" value="" id="placeLinkInput" name="placeLinkInput" 
-            placeholder="Ссылка" required>
-          <button class="modal__submit-button opacity-transition" type="submit">Сохранить</button>
-        </form>
-      </div>
-    </div>
-    <div class="modal modal-preview-card">
-      <div class="modal-preview-card__content">
-        <button class="modal__close-button modal-preview-card__close-button opacity-transition" type="button" aria-label="Закрыть"></button>
-        <img class="modal-preview-card__image" src="images/__dombay.jpg" alt="Название места">
-        <h2 class="modal-preview-card__title">Название места</h2>
-      </div>
-    </div>
-  <script src="./scripts/index.js"></script>
-  <script src="./scripts/initial-сards.js"></script>
+    <script src="./scripts/index.js"></script>
+    <script src="./scripts/initial-сards.js"></script>
+    <script src="./scripts/validate.js"></script>
   </body>
 </html>
