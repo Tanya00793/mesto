@@ -5,8 +5,9 @@ const modal = document.querySelector('.modal');
 const modalEditProfile = document.querySelector('.modal-edit-profile');
 const modalAddCard = document.querySelector('.modal-add-card');
 const modalPreviewCard = document.querySelector('.modal-preview-card');
-
 const modalEditProfileForm = document.forms['modalEditProfileForm'];
+const modalPreviewCardImage = document.querySelector('.modal-preview-card__image');
+const previewCardPlaceTitle = document.querySelector('.modal-preview-card__title');
 const modalEditProfileOpenBtn = document.querySelector('.profile__edit-button');  
 const modalEditProfileCloseBtn = document.querySelector('.modal-edit-profile__close-button');
 const modalPeviewCardCloseBtn = document.querySelector('.modal-preview-card__close-button');
@@ -25,6 +26,33 @@ const placeLinkInput = modalAddCardForm.querySelector('#placeLinkInput');
 const profileName = document.querySelector('.profile__name');
 const profileProfession = document.querySelector('.profile__profession');
 
+const dataForCardsTemplate = [
+  {
+    name: 'Архыз',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+  },
+  {
+    name: 'Челябинская область',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+  },
+  {
+    name: 'Иваново',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+  },
+  {
+    name: 'Камчатка',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+  },
+  {
+    name: 'Холмогорский район',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+  },
+  {
+    name: 'Байкал',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+  }
+];
+
 const vConfig = {
   formSelector: '.form',
   inputSelector: '.form__input',
@@ -36,19 +64,16 @@ const vConfig = {
 
 //---------------------------------------------------------------
 
-
-function initialCard(titleValue, linkValue) {
+function createCard(titleValue, linkValue) {
   const card = cardTemplate.cloneNode(true);
   card.querySelector('.card__title').textContent = titleValue;
-  card.querySelector('.card__image').src = linkValue;
-  card.querySelector('.card__image').alt = titleValue;
   const cardPreviewImage = card.querySelector('.card__image');
+  cardPreviewImage.src = linkValue;
+  cardPreviewImage.alt = titleValue;
   cardPreviewImage.addEventListener('click', function(){
     openModal(modalPreviewCard);
-    const modalPreviewCardImage = document.querySelector('.modal-preview-card__image');
-    modalPreviewCardImage.src = cardPreviewImage.src; 
-    const previewCardPlaceTitle = document.querySelector('.modal-preview-card__title');
-    previewCardPlaceTitle.textContent = card.querySelector('.card__title').textContent;
+    modalPreviewCardImage.src = linkValue;
+    previewCardPlaceTitle.textContent = titleValue;
   });
   const cardLikeBtn = card.querySelector('.card__like-button');
   cardLikeBtn.addEventListener('click', function() {
@@ -61,13 +86,13 @@ function initialCard(titleValue, linkValue) {
   return(card);
 };
 
+const cardsArr = dataForCardsTemplate.forEach(function(item) {
+  photoGrid.append(createCard(item.name, item.link));
+});
+
 function openModal (modal) {
   modal.classList.add('modal_opened');
-  window.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') {
-      closeModal(modal);
-    };
-  });
+  document.addEventListener('keydown', closeModalByEsc); 
 };
 
 function buttonDisabled(modal) {
@@ -78,6 +103,14 @@ function buttonDisabled(modal) {
 
 function closeModal(modal) {
   modal.classList.remove('modal_opened');
+  document.removeEventListener('keydown', closeModalByEsc); 
+};
+
+function closeModalByEsc(evt) {
+  if (evt.key === 'Escape') {
+    const openedPopup = document.querySelector('.popup_opened');
+    closePopup(openedPopup);
+  };
 };
 
 const modalProfileEditSubmitHandler = e => {
@@ -92,7 +125,7 @@ const modalAddCardSubmitHandler = e => {
 	e.preventDefault();
   const placeTitleInputValue = placeTitleInput.value;
   const placeLinkInputValue = placeLinkInput.value;
-  photoGrid.prepend(initialCard(placeTitleInputValue, placeLinkInputValue));
+  photoGrid.prepend(createCard(placeTitleInputValue, placeLinkInputValue));
   closeModal(modalAddCard);
   modalAddCardForm.reset();
 };
@@ -111,6 +144,7 @@ modalEditProfileForm.addEventListener('submit', modalProfileEditSubmitHandler);
 modalAddCardOpenBtn.addEventListener('click', () => {
   openModal(modalAddCard);
   buttonDisabled(modalAddCard);
+  modalAddCardForm.reset();
   placeTitleInput.value = "";
   placeLinkInput.value = "";
 });
