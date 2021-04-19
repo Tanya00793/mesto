@@ -11,17 +11,16 @@ const previewCardPlaceTitle = document.querySelector('.modal-preview-card__title
 const modalEditProfileOpenBtn = document.querySelector('.profile__edit-button');  
 const modalEditProfileCloseBtn = document.querySelector('.modal-edit-profile__close-button');
 const modalPeviewCardCloseBtn = document.querySelector('.modal-preview-card__close-button');
-
 const modalAddCardForm = document.forms['addCardForm'];
 const modalAddCardOpenBtn = document.querySelector('.profile__add-card-button');
 const modalAddCardCloseBtn = document.querySelector('.modal-add-card__close-button');
 
 const cardTemplate = photoGrid.querySelector('.card-template').content.querySelector('.card');
 
-const nameInput = modalEditProfileForm.querySelector('#nameInput');
-const professionInput = modalEditProfileForm.querySelector('#professionInput');
-const placeTitleInput = modalAddCardForm.querySelector('#placeTitleInput');
-const placeLinkInput = modalAddCardForm.querySelector('#placeLinkInput');
+const nameInput = modalEditProfileForm.querySelector('#form__input-name');
+const professionInput = modalEditProfileForm.querySelector('#form__input-profession');
+const placeTitleInput = modalAddCardForm.querySelector('#form__input-place-title');
+const placeLinkInput = modalAddCardForm.querySelector('#form__input-place-link');
 
 const profileName = document.querySelector('.profile__name');
 const profileProfession = document.querySelector('.profile__profession');
@@ -90,15 +89,16 @@ const cardsArr = dataForCardsTemplate.forEach(function(item) {
   photoGrid.append(createCard(item.name, item.link));
 });
 
-function openModal (modal) {
+
+const openModal = modal => {
   modal.classList.add('modal_opened');
   document.addEventListener('keydown', closeModalByEsc); 
 };
 
-function buttonDisabled(modal) {
-  const formSubmitBtn = modal.querySelector('.form__submit-button');
-  formSubmitBtn.classList.add('form__submit-button_disabled');
-  formSubmitBtn.setAttribute('disabled', true);
+const buttonDisabled = (modal, buttonElement) => {
+  const btn = modal.querySelector('.form__submit-button');
+  btn.classList.add('form__submit-button_disabled');
+  btn.setAttribute('disabled', true);
 };
 
 function closeModal(modal) {
@@ -108,8 +108,8 @@ function closeModal(modal) {
 
 function closeModalByEsc(evt) {
   if (evt.key === 'Escape') {
-    const openedPopup = document.querySelector('.popup_opened');
-    closePopup(openedPopup);
+    const openedModal = document.querySelector('.modal_opened');
+    closeModal(openedModal);
   };
 };
 
@@ -134,7 +134,7 @@ const modalAddCardSubmitHandler = e => {
 
 modalEditProfileOpenBtn.addEventListener('click', () => {
   openModal(modalEditProfile);
-  buttonDisabled(modal);
+  modalEditProfileForm.reset();
   nameInput.value = profileName.textContent;
   professionInput.value = profileProfession.textContent;
 });
@@ -143,11 +143,12 @@ modalEditProfileForm.addEventListener('submit', modalProfileEditSubmitHandler);
 
 modalAddCardOpenBtn.addEventListener('click', () => {
   openModal(modalAddCard);
-  buttonDisabled(modalAddCard);
   modalAddCardForm.reset();
-  placeTitleInput.value = "";
-  placeLinkInput.value = "";
+  buttonDisabled(modalAddCard);
+  placeTitleInput.value = '';
+  placeLinkInput.value = '';
 });
+
 modalAddCardCloseBtn.addEventListener('click', () => closeModal(modalAddCard));
 modalAddCardForm.addEventListener('submit', modalAddCardSubmitHandler);
 

@@ -48,14 +48,14 @@
           <h2 class="modal__title">Редактировать профиль</h2>
           <form class="form" action="#" name="modalEditProfileForm" novalidate autocomplete="off">
             <section class="form__section">
-              <input class="form__input" value="" id="nameInput" name="nameInput" 
+              <input class="form__input" value="" id="form__input-name" name="nameInput" 
                 type="text" placeholder="Имя" minlength="2" maxlength="40" required>
-              <span class="form__input-error"></span>
+              <span class="form__input-error" id="form__input-name-error"></span>
             </section> 
             <section class="form__section">
-              <input class="form__input" value="" id="professionInput" name="professionInput"
+              <input class="form__input" value="" id="form__input-profession" name="professionInput"
                 type="text"  placeholder="Профессия" minlength="2" maxlength="200" required>
-              <span class="form__input-error" id="professionInputError"></span>
+              <span class="form__input-error" id="form__input-profession-error"></span>
             </section>
             <button class="form__submit-button opacity-transition"   
               type="submit">Сохранить</button>
@@ -69,14 +69,14 @@
           <h2 class="modal__title">Новое место</h2>
           <form class="form" action="#" name="addCardForm" novalidate autocomplete="off">
             <section class="form__section">
-              <input class="form__input" type="text" value="" id="placeTitleInput" name="placeTitleInput" 
+              <input class="form__input" type="text" value="" id="form__input-place-title" name="placeTitleInput" 
                 placeholder="Название" minlength="1" maxlength="30" required>
-              <span class="form__input-error" id="placeTitleInputError"></span>
+              <span class="form__input-error" id="form__input-place-title-error"></span>
             </section>
             <section class="form__section">
-              <input class="form__input" type="url" value="" id="placeLinkInput" name="placeLinkInput" 
+              <input class="form__input" type="url" value="" id="form__input-place-link" name="placeLinkInput" 
                 placeholder="Ссылка" minlength="0" required>
-              <span class="form__input-error" id="placeLinkInputError"></span>
+              <span class="form__input-error" id="form__input-place-link-error"></span>
             </section>
             <button class="form__submit-button opacity-transition" type="submit">Сохранить</button>
           </form>
