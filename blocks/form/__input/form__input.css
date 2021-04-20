@@ -18,7 +18,3 @@
     font-size: 12px;
   }
 }
-
-.form__input:invalid {
-  border-bottom: 1px solid #FF0000;
-}

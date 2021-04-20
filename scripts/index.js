@@ -1,6 +1,7 @@
 const profile = document.querySelector('.profile');
 const photoGrid = document.querySelector('.photo-grid');
 
+const modals = document.querySelectorAll('.modal');
 const modal = document.querySelector('.modal');
 const modalEditProfile = document.querySelector('.modal-edit-profile');
 const modalAddCard = document.querySelector('.modal-add-card');
@@ -8,12 +9,9 @@ const modalPreviewCard = document.querySelector('.modal-preview-card');
 const modalEditProfileForm = document.forms['modalEditProfileForm'];
 const modalPreviewCardImage = document.querySelector('.modal-preview-card__image');
 const previewCardPlaceTitle = document.querySelector('.modal-preview-card__title');
-const modalEditProfileOpenBtn = document.querySelector('.profile__edit-button');  
-const modalEditProfileCloseBtn = document.querySelector('.modal-edit-profile__close-button');
-const modalPeviewCardCloseBtn = document.querySelector('.modal-preview-card__close-button');
+const modalEditProfileOpenBtn = document.querySelector('.profile__edit-button');
 const modalAddCardForm = document.forms['addCardForm'];
 const modalAddCardOpenBtn = document.querySelector('.profile__add-card-button');
-const modalAddCardCloseBtn = document.querySelector('.modal-add-card__close-button');
 
 const cardTemplate = photoGrid.querySelector('.card-template').content.querySelector('.card');
 
@@ -56,9 +54,9 @@ const vConfig = {
   formSelector: '.form',
   inputSelector: '.form__input',
   submitButtonSelector: '.form__submit-button',
-  inactiveButtonClass: '.form__submit-button_disabled',
-  inputErrorClass: '.form__input-error',
-  errorClass: '.form__input-error_active',
+  inactiveButtonClass: 'form__submit-button_disabled',
+  inputErrorClass: 'form__input-error',
+  errorClass: 'form__input-error_active',
 };
 
 //---------------------------------------------------------------
@@ -132,13 +130,28 @@ const modalAddCardSubmitHandler = e => {
 
 //---------------------------------------------------------------
 
+modals.forEach((modal) => {
+  modal.addEventListener('click', (evt) => {
+    if (evt.target.classList.contains('modal_opened')) {
+      closeModal(modal);
+    };
+    if (evt.target.classList.contains('modal__close-button')) {
+      closeModal(modal);
+    };
+  });
+});
+ 
+
+
+
+
+
 modalEditProfileOpenBtn.addEventListener('click', () => {
   openModal(modalEditProfile);
   modalEditProfileForm.reset();
   nameInput.value = profileName.textContent;
   professionInput.value = profileProfession.textContent;
 });
-modalEditProfileCloseBtn.addEventListener('click', () => closeModal(modalEditProfile));
 modalEditProfileForm.addEventListener('submit', modalProfileEditSubmitHandler);
 
 modalAddCardOpenBtn.addEventListener('click', () => {
@@ -148,30 +161,8 @@ modalAddCardOpenBtn.addEventListener('click', () => {
   placeTitleInput.value = '';
   placeLinkInput.value = '';
 });
-
-modalAddCardCloseBtn.addEventListener('click', () => closeModal(modalAddCard));
 modalAddCardForm.addEventListener('submit', modalAddCardSubmitHandler);
-
-modalPeviewCardCloseBtn.addEventListener('click', () => closeModal(modalPreviewCard));
 
 modalEditProfileForm.addEventListener('submit', function (evt) {
   evt.preventDefault();
-});
-
-modalEditProfile.addEventListener('click', (e) => {
-  if (e.target === e.currentTarget) {
-    closeModal(modalEditProfile);
-  };
-});
-
-modalAddCard.addEventListener('click', (e) => {
-  if (e.target === e.currentTarget) {
-    closeModal(modalAddCard);
-  };
-});
-
-modalPreviewCard.addEventListener('click', (e) => {
-  if (e.target === e.currentTarget) {
-    closeModal(modalPreviewCard);
-  };
 });
