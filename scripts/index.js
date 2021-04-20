@@ -131,7 +131,7 @@ const modalAddCardSubmitHandler = e => {
 //---------------------------------------------------------------
 
 modals.forEach((modal) => {
-  modal.addEventListener('click', (evt) => {
+  modal.addEventListener('click', evt => {
     if (evt.target.classList.contains('modal_opened')) {
       closeModal(modal);
     };
@@ -140,11 +140,6 @@ modals.forEach((modal) => {
     };
   });
 });
- 
-
-
-
-
 
 modalEditProfileOpenBtn.addEventListener('click', () => {
   openModal(modalEditProfile);
@@ -163,6 +158,6 @@ modalAddCardOpenBtn.addEventListener('click', () => {
 });
 modalAddCardForm.addEventListener('submit', modalAddCardSubmitHandler);
 
-modalEditProfileForm.addEventListener('submit', function (evt) {
+modalEditProfileForm.addEventListener('submit', (evt) => {
   evt.preventDefault();
 });
