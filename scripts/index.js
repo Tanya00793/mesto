@@ -71,45 +71,45 @@ function createCard(titleValue, linkValue) {
     openModal(modalPreviewCard);
     modalPreviewCardImage.src = linkValue;
     previewCardPlaceTitle.textContent = titleValue;
-  });
+  })
   const cardLikeBtn = card.querySelector('.card__like-button');
   cardLikeBtn.addEventListener('click', function() {
     cardLikeBtn.classList.toggle('card__like-button_active');
-  });
+  })
   const cardDeleteBtn = card.querySelector('.card__delete-button');
   cardDeleteBtn.addEventListener('click', function() {
     card.remove();
-  });
+  })
   return(card);
-};
+}
 
 const cardsArr = dataForCardsTemplate.forEach(function(item) {
   photoGrid.append(createCard(item.name, item.link));
-});
+})
 
 
 const openModal = modal => {
   modal.classList.add('modal_opened');
   document.addEventListener('keydown', closeModalByEsc); 
-};
+}
 
 const buttonDisabled = (modal, buttonElement) => {
   const btn = modal.querySelector('.form__submit-button');
   btn.classList.add('form__submit-button_disabled');
   btn.setAttribute('disabled', true);
-};
+}
 
 function closeModal(modal) {
   modal.classList.remove('modal_opened');
   document.removeEventListener('keydown', closeModalByEsc); 
-};
+}
 
 function closeModalByEsc(evt) {
   if (evt.key === 'Escape') {
     const openedModal = document.querySelector('.modal_opened');
     closeModal(openedModal);
   };
-};
+}
 
 const modalProfileEditSubmitHandler = e => {
 	e.preventDefault(); 
@@ -117,7 +117,7 @@ const modalProfileEditSubmitHandler = e => {
   profileProfession.textContent = professionInput.value;
   closeModal(modalEditProfile);
   modalEditProfileForm.reset();
-};
+}
 
 const modalAddCardSubmitHandler = e => {
 	e.preventDefault();
@@ -126,7 +126,7 @@ const modalAddCardSubmitHandler = e => {
   photoGrid.prepend(createCard(placeTitleInputValue, placeLinkInputValue));
   closeModal(modalAddCard);
   modalAddCardForm.reset();
-};
+}
 
 //---------------------------------------------------------------
 
