@@ -92,7 +92,7 @@ const modalProfileEditSubmitHandler = e => {
 
 const modalAddCardSubmitHandler = e => {
 	e.preventDefault();
-  photoGrid.prepend(createCard({name:placeTitleInput.value}, {link:placeLinkInput.value}));
+  photoGrid.prepend(createCard({name:placeTitleInput.value, link:placeLinkInput.value}));
   closeModal(modalAddCard);
   modalAddCardForm.reset();
 }
