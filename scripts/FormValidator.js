@@ -48,7 +48,7 @@ export class FormValidator {
     const inputs = Array.from(this.form.querySelectorAll(this.vconfig.inputSelector));
     const button = this.form.querySelector(this.vconfig.submitButtonSelector);
     inputs.forEach(input => {
-      input.addEventListener('input', () => {
+      input.setEventListeners('input', () => {
         this._checkInputValidity(input);
         this._toggleButtonState(inputs, button);
       })
@@ -57,7 +57,7 @@ export class FormValidator {
 
   enableValidation() {
     this._setEventListeners();
-    this.form.addEventListener('submit', (e) => this._preventFormSubmit(e));
+    this.form.setEventListeners('submit', (e) => this._preventFormSubmit(e));
   }
 
 }
