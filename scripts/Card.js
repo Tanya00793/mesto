@@ -1,36 +1,31 @@
-import { openModal, closeModal, closeModalByEsc } from './utils/utils.js';
+import { openModal } from './utils/utils.js';
 
 export class Card {
-  constructor(cardData, cardTemplate) {
+  constructor(cardData, _cardSelector) {
     this.cardData = cardData;
-    this.cardTemplate = cardTemplate;
-    this.card = this._createCard();
+    this._cardSelector = _cardSelector;
+    this.card = this.renderCard();
     this.cardItemElement = this.card.querySelector('.card');
     this.cardLikeBtn = this.card.querySelector('.card__like-button');
   }
 
   _getTemplate() {
-    const cardTemplate = document.querySelector('#cardTemplate').content;
-    this.card = cardTemplate.cloneNode(true);
-    this.card.querySelector('.card__title').textContent = this.cardData.name;
-    const cardPreviewImage = this.card.querySelector('.card__image');
-    cardPreviewImage.src = this.cardData.link;
-    cardPreviewImage.alt = this.cardData.name;
+    const cardTemplate = document
+      .querySelector(this._cardSelector)
+      .content
+      .querySelector('.card')
+      .cloneNode(true);
+    return cardTemplate;
   }
 
-  _createCard() {
-    this._getTemplate();
-    return this.card;
-  }
-
-  _addEventListeners() {
+  _setEventListeners() {
     const cardPreviewImage = this.card.querySelector('.card__image');
     const cardLikeBtn = this.card.querySelector('.card__like-button');
     const cardDeleteBtn = this.card.querySelector('.card__delete-button');
 
-    cardPreviewImage.addEventListener('click', () => this._preview());
-    cardLikeBtn.addEventListener('click', () => this._like());
-    cardDeleteBtn.addEventListener('click', () => this._remove());
+    cardPreviewImage.setEventListeners('click', () => this._preview());
+    cardLikeBtn.setEventListeners('click', () => this._like());
+    cardDeleteBtn.setEventListeners('click', () => this._remove());
   }
 
   _like() {
@@ -51,8 +46,12 @@ export class Card {
     modalPreviewCardImage.alt = this.cardData.name;
   }
 
-  render() {
-    this._addEventListeners();
+  renderCard() {
+    this.card = this._getTemplate();
+    this.card.querySelector('.card__title').textContent = this.cardData.name;
+    const cardPreviewImage = this.card.querySelector('.card__image');
+    cardPreviewImage.src = this.cardData.link;
+    cardPreviewImage.alt = this.cardData.name;
     return this.card;
   }
 }

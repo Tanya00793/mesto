@@ -67,7 +67,7 @@ dataForCardsTemplate.forEach(function(item) {
 
 function createCard({name, link}) {
   const card = new Card({name, link}, '.card-template');
-  return card.render();
+  return card.renderCard();
 }
 
 const validationEditProfile = new FormValidator(vConfig, modalEditProfileForm);
