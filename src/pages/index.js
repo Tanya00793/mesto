@@ -55,8 +55,9 @@ function cardImageClickHandler (title, link) {
   modalWithImage.openModal(title, link);
 }
 
-const modalAddCardSubmitHandler = (data) => {
-  photoGridSection.addItem(createCard(data));
+function modalAddCardSubmitHandler (data) {
+  const newCard = createCard(data);
+  photoGridSection.addItem(newCard);
 }
 
 const modalWithAddCardForm = new ModalWithForm ('.modal-add-card', modalAddCardSubmitHandler);
