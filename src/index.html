@@ -4,12 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Место</title>
-    <link rel="stylesheet" href="./index.css">
   </head>
   <body class="page">
     <div class="page-container">
       <header class="header">
-        <img class="header__logo" src="images/__logo.svg" alt="логотип mesto russia">
+        <img class="header__logo" src="<%=require('./images/__logo.svg')%>" alt="логотип mesto russia"> 
       </header>
       <main class="content">
         <section class="profile">
@@ -90,6 +89,5 @@
         </div>
       </section>
     </div>
-    <script type="module" src="./scripts/pages/index.js"></script>
   </body>
 </html>

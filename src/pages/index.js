@@ -1,9 +1,11 @@
-import { PhotoGridSection } from '../components/PhotoGridSection.js';
-import { Card } from '../components/Card.js';
-import { FormValidator } from '../components/FormValidator.js';
-import { ModalWithImage } from '../components/ModalWithImage.js';
-import { ModalWithForm } from '../components/ModalWithForm.js';
-import { UserInfo } from '../components/UserInfo.js';
+import "./index.css"
+
+import { PhotoGridSection } from '../scripts/components/PhotoGridSection';
+import { Card } from '../scripts/components/Card.js';
+import { FormValidator } from '../scripts/components/FormValidator.js';
+import { ModalWithImage } from '../scripts/components/ModalWithImage.js';
+import { ModalWithForm } from '../scripts/components/ModalWithForm.js';
+import { UserInfo } from '../scripts/components/UserInfo.js';
 
 import { 
   modalEditProfile,
@@ -19,7 +21,7 @@ import {
   dataForCardsTemplate,
   vConfig,
   cardTemplateSelector
-} from '../utils/constants.js';
+} from '../scripts/utils/constants.js';
 
 //---------------------------------------------------------------
 
