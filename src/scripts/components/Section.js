@@ -1,17 +1,17 @@
-export class PhotoGridSection {
+export class Section {
   constructor ( { items, renderer }, selector) {
     this._container = document.querySelector(selector);
     this._dataForCardsTemplate = items;
     this._renderer = renderer;
   }
 
-  renderCard () {
+  renderItems () {
     this._dataForCardsTemplate.reverse().forEach(data => {
-      this.addCardItem(this._renderer(data));
+      this._renderer(data);
     })
   }
 
-  addCardItem (element) {
+  addItem (element) {
     this._container.prepend(element);
   }
 }

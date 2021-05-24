@@ -1,6 +1,6 @@
 import "./index.css"
 
-import { PhotoGridSection } from '../scripts/components/PhotoGridSection';
+import { Section } from '../scripts/components/Section';
 import { Card } from '../scripts/components/Card.js';
 import { FormValidator } from '../scripts/components/FormValidator.js';
 import { ModalWithImage } from '../scripts/components/ModalWithImage.js';
@@ -8,8 +8,6 @@ import { ModalWithForm } from '../scripts/components/ModalWithForm.js';
 import { UserInfo } from '../scripts/components/UserInfo.js';
 
 import { 
-  modalEditProfile,
-  modalAddCard,
   modalEditProfileForm,
   modalEditProfileOpenBtn,
   modalAddCardForm,
@@ -25,15 +23,20 @@ import {
 
 //---------------------------------------------------------------
 
-const photoGridSection = new PhotoGridSection({
+function createCard (cardData) {
+  const card = new Card(cardData, cardTemplateSelector, cardImageClickHandler);
+  return card.renderCard();
+}
+
+const photoGridSection = new Section({
   items: dataForCardsTemplate,
-  renderer: cardData => {
-    const card = new Card(cardData, cardTemplateSelector, cardImageClickHandler);
-    return card.renderCard();
+  renderer: data => {
+    const card = createCard(data);
+    photoGridSection.addItem(card);
   }
 },'.photo-grid');
 
-photoGridSection.renderCard();
+photoGridSection.renderItems();
 
 const validationEditProfile = new FormValidator(vConfig, modalEditProfileForm);
 validationEditProfile.enableValidation();
@@ -41,14 +44,7 @@ validationEditProfile.enableValidation();
 const validationAddCard = new FormValidator(vConfig, modalAddCardForm);
 validationAddCard.enableValidation();
 
-const buttonDisabled = (modal, button) => {
-  const btn = modal.querySelector('.form__submit-button');
-  btn.classList.add('form__submit-button_disabled');
-  btn.setAttribute('disabled', true);
-}
-
-const modalProfileEditSubmitHandler = (e, name, professiom) => {
-	e.preventDefault(); 
+const modalProfileEditSubmitHandler = (name, profession) => {
   userInfo.setUserInfo(nameInput.value, professionInput.value);
 }
 
@@ -59,13 +55,8 @@ function cardImageClickHandler (title, link) {
   modalWithImage.openModal(title, link);
 }
 
-const modalAddCardSubmitHandler = e => {
-	e.preventDefault();
-  const card = new Card ({
-    name: placeTitleInput.value,
-    link: placeLinkInput.value,
-  }, cardTemplateSelector, cardImageClickHandler);
-  photoGridSection.addCardItem(card.renderCard())
+const modalAddCardSubmitHandler = (data) => {
+  photoGridSection.addItem(createCard(data));
 }
 
 const modalWithAddCardForm = new ModalWithForm ('.modal-add-card', modalAddCardSubmitHandler);
@@ -81,7 +72,6 @@ const userInfo = new UserInfo('.profile__name', '.profile__profession');
 modalEditProfileOpenBtn.addEventListener('click', () => {
   modalWithEditProfileForm.openModal();
   modalEditProfileForm.reset();
-  buttonDisabled(modalEditProfile);
   const data = userInfo.getUserInfo();
   nameInput.value = data.name;
   professionInput.value = data.profession;
@@ -90,5 +80,4 @@ modalEditProfileOpenBtn.addEventListener('click', () => {
 modalAddCardOpenBtn.addEventListener('click', () => {
   modalWithAddCardForm.openModal();
   modalAddCardForm.reset();
-  buttonDisabled(modalAddCard);
 })

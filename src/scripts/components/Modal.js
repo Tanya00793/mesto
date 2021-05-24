@@ -8,7 +8,7 @@ export class Modal {
     document.addEventListener('keydown', this._closeModalByEsc); 
   }
   
-  closeModal = () => {
+  closeModal () {
     this._modal.classList.remove('modal_opened');
     document.removeEventListener('keydown', this._closeModalByEsc); 
   }
@@ -20,14 +20,11 @@ export class Modal {
   }
 
   setEventListeners () {
-    this.modals = document.querySelectorAll('.modal');
-    this.modals.forEach((modal) => {
-      this._modal.addEventListener('click', e => {
-        if (e.target.classList.contains('modal_opened') || 
-        e.target.classList.contains('modal__close-button')) {
-          this.closeModal(modal);
-        }
-      })
+    this._modal.addEventListener('click', e => {
+      if (e.target.classList.contains('modal_opened') || 
+      e.target.classList.contains('modal__close-button')) {
+        this.closeModal();
+      }
     })
   }
 }
