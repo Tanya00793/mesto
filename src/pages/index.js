@@ -44,9 +44,9 @@ validationEditProfile.enableValidation();
 const validationAddCard = new FormValidator(vConfig, modalAddCardForm);
 validationAddCard.enableValidation();
 
-const modalProfileEditSubmitHandler = (name, profession) => {
-  userInfo.setUserInfo(nameInput.value, professionInput.value);
-}
+const modalProfileEditSubmitHandler = (inputsData) => {
+  userInfo.setUserInfo(inputsData.nameInput, inputsData.professionInput);
+} 
 
 const modalWithImage = new ModalWithImage('.modal-preview-card');
 modalWithImage.setEventListeners();
@@ -72,7 +72,6 @@ const userInfo = new UserInfo('.profile__name', '.profile__profession');
 
 modalEditProfileOpenBtn.addEventListener('click', () => {
   modalWithEditProfileForm.openModal();
-  modalEditProfileForm.reset();
   const data = userInfo.getUserInfo();
   nameInput.value = data.name;
   professionInput.value = data.profession;
@@ -80,5 +79,4 @@ modalEditProfileOpenBtn.addEventListener('click', () => {
 
 modalAddCardOpenBtn.addEventListener('click', () => {
   modalWithAddCardForm.openModal();
-  modalAddCardForm.reset();
 })

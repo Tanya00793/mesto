@@ -21,7 +21,7 @@ export class ModalWithForm extends Modal {
     this._form.addEventListener('submit', (e) => {
       this._submitHandler(this._getInputValues());
       this.closeModal();
-    })  
+    })
   }
   
   closeModal () {

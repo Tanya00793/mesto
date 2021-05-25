@@ -42,10 +42,9 @@ export class FormValidator {
     }
   }
 
-  _disableButton (button) {
-    const btn = this._form.querySelector('.form__submit-button');
-    btn.classList.add('form__submit-button_disabled');
-    btn.setAttribute('disabled', true);
+  _disableButton () {
+    this._button.classList.add(this._vconfig.inactiveButtonClass);
+    this._button.setAttribute('disabled', true);
   }
 
   _preventFormSubmit(e) {
@@ -53,8 +52,8 @@ export class FormValidator {
   }
 
   _setEventListeners() {
+    this._disableButton(this._button);
     this._form.addEventListener('reset', () => {
-      this._disableButton(this._button);
       this._inputs.forEach((input) => {
         this._hideInputError(input)
       })
