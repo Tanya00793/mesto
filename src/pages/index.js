@@ -14,8 +14,6 @@ import {
   modalAddCardOpenBtn,
   nameInput,
   professionInput,
-  placeTitleInput,
-  placeLinkInput,
   dataForCardsTemplate,
   vConfig,
   cardTemplateSelector
