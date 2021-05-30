@@ -12,8 +12,10 @@
       </header>
       <main class="content">
         <section class="profile">
-          <div class="profile__info-column"> 
-            <div class="profile__avatar"></div> 
+          <div class="profile__info-column">
+            <div class="profile__avatar">
+              <button class="profile__avatar-edit-button opacity-transition"></button>
+            </div>
             <div class="profile__info-container">
               <div class="profile__user-data-container">
                 <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -27,11 +29,14 @@
         <section class="photo-grid">
           <template class="card-template" id="cardTemplate">
             <article class="card">
-              <button class="card__delete-button opacity-transition" type="button" aria-label="Удалить"></button>
-              <img class="card__image" src="images/__karachaevsk.jpg" alt="Карачаевск">
+              <button class="card__delete-button hidden opacity-transition" type="button" aria-label="Удалить"></button>
+              <img class="card__image" src="#" alt="">
               <div class="card__main">
-                <h2 class="card__title">Карачаевск</h2>
-                <button class="card__like-button opacity-transition" type="button" aria-label="Оценить"></button>
+                <h2 class="card__title"></h2>
+                <div class="card__likes-container">
+                  <button class="card__like-button opacity-transition" type="button" aria-label="Оценить"></button>
+                  <span class="card__likes">0</span>
+                </div>
               </div>
             </article>
         </template>
@@ -61,6 +66,22 @@
           </form>
         </div>
       </section>
+      <section class="modal modal-edit-avatar">
+        <div class="modal__content">
+          <button class="modal__close-button modal-edit-avatar__close-button opacity-transition" type="button" 
+            aria-label="Закрыть"></button>
+          <h2 class="modal__title">Обновить аватар</h2>
+          <form class="form" action="#" name="editAvatarForm" novalidate autocomplete="off">
+            <section class="form__section">
+              <input class="form__input" type="url" value="" id="form__input-avatar-link" 
+                name="link" placeholder="Ссылка" minlength="0" required>
+              <span class="form__input-error" id="form__input-avatar-link-error"></span>
+            </section>
+            <button class="form__submit-button form__submit-button_type_edit-avatar opacity-transition" 
+              type="submit">Сохранить</button>
+          </form>
+        </div>
+      </section>
       <section class="modal modal-add-card">
         <div class="modal__content">
           <button class="modal__close-button modal-add-card__close-button opacity-transition" type="button" 
@@ -77,7 +98,7 @@
                 placeholder="Ссылка" minlength="0" required>
               <span class="form__input-error" id="form__input-place-link-error"></span>
             </section>
-            <button class="form__submit-button opacity-transition" type="submit">Сохранить</button>
+            <button class="form__submit-button opacity-transition" type="submit">Создать</button>
           </form>
         </div>
       </section>
@@ -86,6 +107,16 @@
           <button class="modal__close-button modal-preview-card__close-button opacity-transition" type="button" aria-label="Закрыть"></button>
           <img class="modal-preview-card__image" src="#" alt="#">
           <h2 class="modal-preview-card__title"></h2>
+        </div>
+      </section>
+      <section class="modal modal-delete-card">
+        <div class="modal__content">
+          <button class="modal__close-button modal-delete-card__close-button opacity-transition" type="button" 
+            aria-label="Закрыть"></button>
+          <h2 class="modal__title">Вы уверены?</h2>
+          <form class="form" action="#" name="deleteCardForm" novalidate autocomplete="off">
+            <button class="form__submit-button opacity-transition" type="submit">Да</button>
+          </form>
         </div>
       </section>
     </div>

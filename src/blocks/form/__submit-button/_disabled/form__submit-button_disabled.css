@@ -1,26 +1,7 @@
 .form__submit-button_disabled {
-  margin: 14px auto 0;
-  padding: 15px 32px;
   background-color: #fff;
   border: 1px solid #000;
   color: #000;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 18px;
-  width: 100%;
-  min-height: 50px;
-  border-radius: 2px;
-  opacity: 0.2;
   cursor: default;
-}
-
-.form__submit-button_disabled:hover {
   opacity: .2;
-}
-  
-@media screen and (max-width: 424px) {
-  .form__submit-button_disabled {
-    font-size: 14px;
-  }
 }

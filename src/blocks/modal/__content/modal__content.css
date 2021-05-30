@@ -1,11 +1,12 @@
 .modal__content {
   position: relative;
   margin: auto;
-  padding: 34px 36px 37px;
-  max-width: 358px;
+  padding: 0;
   width: 100%;
+  max-width: 430px;
   border-radius: 10px;
   background: #fff;
+
 }
 
 @media screen and (max-width: 1023px) {

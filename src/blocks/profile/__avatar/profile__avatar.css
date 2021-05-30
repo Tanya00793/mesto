@@ -4,21 +4,21 @@
   height: 127.5px;
   width: 100%;
   background: url('../../../images/__avatar.png') center no-repeat;
+  background-size: cover;
   border-radius: 50%;
 } 
 
 @media screen and (max-width: 1212px) { 
   .profile__avatar { 
     margin: 0 auto;
-    height: 167.5px;
     max-width: 208.75px;
-    background-size: contain;
+    height: 208.75px;
   } 
 }
 
 @media screen and (max-width: 424px) { 
   .profile__avatar{ 
     max-width: 168.75px;
-    height: 127.5px; 
+    height: 168.75px; 
   } 
 } 

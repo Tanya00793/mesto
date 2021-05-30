@@ -19,9 +19,21 @@ export class ModalWithForm extends Modal {
     super.setEventListeners();
     this._form = this._modal.querySelector('.form');
     this._form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      this._formLoading(true);
       this._submitHandler(this._getInputValues());
       this.closeModal();
     })
+  }
+
+  _formLoading (isLoading) {
+    this._submitButton = this._form.querySelector('.form__submit-button');
+    if (isLoading || this._submitButton.textContent === "Сохранить") {
+      this._submitButton.textContent = "Сохранение...";
+    }
+    else {
+      this._submitButton.textContent = "Сохранить";
+    }
   }
   
   closeModal () {

@@ -1,7 +1,12 @@
-export const modalEditProfile = document.querySelector('.modal-edit-profile');
+export const avatarElement = document.querySelector('.profile__avatar');
+
 export const modalAddCard = document.querySelector('.modal-add-card');
 export const modalEditProfileForm = document.forms['modalEditProfileForm'];
 export const modalEditProfileOpenBtn = document.querySelector('.profile__edit-button');
+
+export const modalEditAvatarForm = document.forms['editAvatarForm'];
+export const modalEditAvatarOpenBtn = document.querySelector('.profile__avatar-edit-button');
+
 export const modalAddCardForm = document.forms['addCardForm'];
 export const modalAddCardOpenBtn = document.querySelector('.profile__add-card-button');
 
@@ -9,6 +14,8 @@ export const nameInput = modalEditProfileForm.querySelector('#form__input-name')
 export const professionInput = modalEditProfileForm.querySelector('#form__input-profession');
 export const placeTitleInput = modalAddCardForm.querySelector('#form__input-place-title');
 export const placeLinkInput = modalAddCardForm.querySelector('#form__input-place-link');
+
+export const cardDeleteButtons = document.querySelectorAll('.card__delete-button');
 
 export const dataForCardsTemplate = [
   {
@@ -42,6 +49,7 @@ export const vConfig = {
   inputSelector: '.form__input',
   submitButtonSelector: '.form__submit-button',
   inactiveButtonClass: 'form__submit-button_disabled',
+  activeButtonClass: 'form__submit-button_active',
   inputErrorClass: 'form__input-error',
   errorClass: 'form__input-error_active',
 };
