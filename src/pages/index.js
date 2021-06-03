@@ -90,7 +90,8 @@ function cardImageClickHandler (title, link) {
 
 function likeClickHandler (card) {
   api.likeCard(card.getId(), card.getIsLiked())
-    .then(response => { card.updateLikes(response.likes) })
+  .then(response => { card.updateLikes(response.likes) })
+  .catch(console.error);
 }
 
 const editProfileSubmitHandler = (inputsData) => {
@@ -125,11 +126,11 @@ function addCardSubmitHandler (inputsData) {
 }
 
 function confirmDeletingSubmitHandler () {
-  const card = popupWithDeleteCardConfirmationForm.getId();
+  const card = popupWithConfirmationForm.getId();
   api.deleteCard (card.id)
   .then(() => {
     card.remove();
-    popupWithDeleteCardConfirmationForm.closePopup();
+    popupWithConfirmationForm.closePopup();
   })
   .catch(console.error);
 }
