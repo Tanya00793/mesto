@@ -1,4 +1,4 @@
-.modal__content {
+.popup__content {
   position: relative;
   margin: auto;
   padding: 0;
@@ -10,7 +10,7 @@
 }
 
 @media screen and (max-width: 1023px) {
-  .modal__content {
+  .popup__content {
     margin: auto 19px;
     padding: 24px 26px 27px;
     width: calc(100% - 100px*2);
@@ -18,14 +18,14 @@
 }
 
 @media screen and (max-width: 767px) {
-  .modal__content {
+  .popup__content {
     padding: 63px 52px;
     width: calc(100% - 50px*2);
   }
 }
 
 @media screen and (max-width: 424px) {
-  .modal__content {
+  .popup__content {
     margin-top: 123px;
     padding: 25px 22px;
     width: calc(100% - 35px*2);

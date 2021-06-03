@@ -28,19 +28,16 @@ export class FormValidator {
     }
   }
 
-  _hasInvalidInput(inputs) {
-    return inputs.every(input => input.validity.valid);
+  _hasInvalidInput() {
+    return this._inputs.every(input => input.validity.valid);
   }
 
   _toggleButtonState (inputs) {
     if (!this._hasInvalidInput(inputs)) {
-      this._button.setAttribute('disabled', true);
-      this._button.classList.remove(this._vconfig.activeButtonClass);
-      this._button.classList.add(this._vconfig.inactiveButtonClass);
+      this._disableButton();
     } else {
       this._button.removeAttribute('disabled');
       this._button.classList.remove(this._vconfig.inactiveButtonClass);
-      this._button.classList.add(this._vconfig.activeButtonClass);
     }
   }
 
@@ -64,7 +61,7 @@ export class FormValidator {
     this._inputs.forEach(input => {
       input.addEventListener('input', () => {
         this._checkInputValidity(input);
-        this._toggleButtonState(this._inputs, this._button);
+        this._toggleButtonState();
       })
     })
   }

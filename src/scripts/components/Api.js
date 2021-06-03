@@ -23,10 +23,11 @@ export class Api {
     };
     return fetch (
       `${this.address}/${this.cohortId}/${endpoint}`,
-      body ? { ...fetchInit, body: JSON.stringify(body) } : fetchInit
-    ).then (
+      body ? { ...fetchInit, body: JSON.stringify(body) } : fetchInit)
+    .then (
       this._handleResponse
-    );
+    )
+    .catch(console.error);
   }
 
   getUserInfo () {
@@ -49,12 +50,8 @@ export class Api {
     return this._request('cards', 'POST', cardData);
   }
 
-  likeCard (id) {
-    return this._request(`cards/likes/${id}`, 'PUT');
-  }
-
-  cancelLikeCard (id) {
-    return this._request(`cards/likes/${id}`, 'DELETE');
+  likeCard (cardID, isLiked) {
+    return this._request(`cards/likes/${cardID}`, isLiked ? 'DELETE' : 'PUT');
   }
 
   deleteCard (cardID) {

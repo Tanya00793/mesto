@@ -18,8 +18,8 @@
             </div>
             <div class="profile__info-container">
               <div class="profile__user-data-container">
-                <h1 class="profile__name">Жак-Ив Кусто</h1>
-                <p class="profile__profession">Исследователь океана</p>
+                <h1 class="profile__name">Ваше имя</h1>
+                <p class="profile__profession">Дополнительная информация о себе</p>
               </div>
               <button class="profile__edit-button opacity-transition" type="button" aria-label="Редактировать"></button>
             </div>
@@ -45,12 +45,12 @@
       <footer class="footer">
         <p class="footer__copyright">&copy;2021 Mesto Russia</p>
       </footer>
-      <section class="modal modal-edit-profile">
-        <div class="modal__content">
-          <button class="modal__close-button modal-edit-profile__close-button opacity-transition" 
+      <section class="popup popup-edit-profile">
+        <div class="popup__content">
+          <button class="popup__close-button popup-edit-profile__close-button opacity-transition" 
             type="button" aria-label="Закрыть"></button>
-          <h2 class="modal__title">Редактировать профиль</h2>
-          <form class="form" action="#" name="modalEditProfileForm" novalidate autocomplete="off">
+          <h2 class="popup__title">Редактировать профиль</h2>
+          <form class="form" action="#" name="popupEditProfileForm" novalidate autocomplete="off">
             <section class="form__section">
               <input class="form__input" value="" id="form__input-name" name="nameInput" 
                 type="text" placeholder="Имя" minlength="2" maxlength="40" required>
@@ -66,11 +66,11 @@
           </form>
         </div>
       </section>
-      <section class="modal modal-edit-avatar">
-        <div class="modal__content">
-          <button class="modal__close-button modal-edit-avatar__close-button opacity-transition" type="button" 
+      <section class="popup popup-edit-avatar">
+        <div class="popup__content">
+          <button class="popup__close-button popup-edit-avatar__close-button opacity-transition" type="button" 
             aria-label="Закрыть"></button>
-          <h2 class="modal__title">Обновить аватар</h2>
+          <h2 class="popup__title">Обновить аватар</h2>
           <form class="form" action="#" name="editAvatarForm" novalidate autocomplete="off">
             <section class="form__section">
               <input class="form__input" type="url" value="" id="form__input-avatar-link" 
@@ -82,11 +82,11 @@
           </form>
         </div>
       </section>
-      <section class="modal modal-add-card">
-        <div class="modal__content">
-          <button class="modal__close-button modal-add-card__close-button opacity-transition" type="button" 
+      <section class="popup popup-add-card">
+        <div class="popup__content">
+          <button class="popup__close-button popup-add-card__close-button opacity-transition" type="button" 
             aria-label="Закрыть"></button>
-          <h2 class="modal__title">Новое место</h2>
+          <h2 class="popup__title">Новое место</h2>
           <form class="form" action="#" name="addCardForm" novalidate autocomplete="off">
             <section class="form__section">
               <input class="form__input" type="text" value="" id="form__input-place-title" name="name" 
@@ -98,24 +98,25 @@
                 placeholder="Ссылка" minlength="0" required>
               <span class="form__input-error" id="form__input-place-link-error"></span>
             </section>
-            <button class="form__submit-button opacity-transition" type="submit">Создать</button>
+            <button class="form__submit-button form__submit-button_type_create opacity-transition" type="submit">Создать</button>
           </form>
         </div>
       </section>
-      <section class="modal modal-preview-card">
-        <div class="modal-preview-card__content">
-          <button class="modal__close-button modal-preview-card__close-button opacity-transition" type="button" aria-label="Закрыть"></button>
-          <img class="modal-preview-card__image" src="#" alt="#">
-          <h2 class="modal-preview-card__title"></h2>
+      <section class="popup popup-preview-card">
+        <div class="popup-preview-card__content">
+          <button class="popup__close-button popup-preview-card__close-button opacity-transition" type="button" aria-label="Закрыть"></button>
+          <img class="popup-preview-card__image" src="#" alt="#">
+          <h2 class="popup-preview-card__title"></h2>
         </div>
       </section>
-      <section class="modal modal-delete-card">
-        <div class="modal__content">
-          <button class="modal__close-button modal-delete-card__close-button opacity-transition" type="button" 
+      <section class="popup popup-delete-card">
+        <div class="popup__content">
+          <button class="popup__close-button popup-delete-card__close-button opacity-transition" type="button" 
             aria-label="Закрыть"></button>
-          <h2 class="modal__title">Вы уверены?</h2>
-          <form class="form" action="#" name="deleteCardForm" novalidate autocomplete="off">
-            <button class="form__submit-button opacity-transition" type="submit">Да</button>
+          <h2 class="popup__title">Вы уверены?</h2>
+          <form class="form form_type_delete-card" action="#" name="deleteCardForm" novalidate autocomplete="off">
+            <button class="form__submit-button form__submit-button_type_delete-card opacity-transition" 
+              type="submit">Да</button>
           </form>
         </div>
       </section>

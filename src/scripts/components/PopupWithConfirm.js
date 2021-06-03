@@ -1,13 +1,13 @@
-import { Modal } from './Modal.js'
+import { Popup } from './Popup.js'
 
-export class ModalWithConfirm extends Modal {
-  constructor (modalSelector, {submitHandler}) {
-    super(modalSelector);
+export class PopupWithConfirm extends Popup {
+  constructor (popupSelector, submitHandler) {
+    super(popupSelector);
     this._submitHandler = submitHandler;
   }
 
-  openModal (id) {
-    super.openModal();
+  openPopup (id) {
+    super.openPopup();
     this._id = id;
   }
 
@@ -17,11 +17,10 @@ export class ModalWithConfirm extends Modal {
   
   setEventListeners () {
     super.setEventListeners();
-    this._form = this._modal.querySelector('.form');
+    this._form = this._popup.querySelector('.form');
     this._form.addEventListener('submit', (e) => {
       e.preventDefault();
       this._submitHandler();
-      this.closeModal();
     })
   }
 }

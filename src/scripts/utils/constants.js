@@ -1,19 +1,19 @@
 export const avatarElement = document.querySelector('.profile__avatar');
 
-export const modalAddCard = document.querySelector('.modal-add-card');
-export const modalEditProfileForm = document.forms['modalEditProfileForm'];
-export const modalEditProfileOpenBtn = document.querySelector('.profile__edit-button');
+export const popupAddCard = document.querySelector('.popup-add-card');
+export const popupEditProfileForm = document.forms['popupEditProfileForm'];
+export const popupEditProfileOpenBtn = document.querySelector('.profile__edit-button');
 
-export const modalEditAvatarForm = document.forms['editAvatarForm'];
-export const modalEditAvatarOpenBtn = document.querySelector('.profile__avatar-edit-button');
+export const popupEditAvatarForm = document.forms['editAvatarForm'];
+export const popupEditAvatarOpenBtn = document.querySelector('.profile__avatar-edit-button');
 
-export const modalAddCardForm = document.forms['addCardForm'];
-export const modalAddCardOpenBtn = document.querySelector('.profile__add-card-button');
+export const popupAddCardForm = document.forms['addCardForm'];
+export const popupAddCardOpenBtn = document.querySelector('.profile__add-card-button');
 
-export const nameInput = modalEditProfileForm.querySelector('#form__input-name');
-export const professionInput = modalEditProfileForm.querySelector('#form__input-profession');
-export const placeTitleInput = modalAddCardForm.querySelector('#form__input-place-title');
-export const placeLinkInput = modalAddCardForm.querySelector('#form__input-place-link');
+export const nameInput = popupEditProfileForm.querySelector('#form__input-name');
+export const professionInput = popupEditProfileForm.querySelector('#form__input-profession');
+export const placeTitleInput = popupAddCardForm.querySelector('#form__input-place-title');
+export const placeLinkInput = popupAddCardForm.querySelector('#form__input-place-link');
 
 export const cardDeleteButtons = document.querySelectorAll('.card__delete-button');
 
@@ -53,5 +53,7 @@ export const vConfig = {
   inputErrorClass: 'form__input-error',
   errorClass: 'form__input-error_active',
 };
+
+//---------------------------------------------------------------
 
 export const cardTemplateSelector = '.card-template';

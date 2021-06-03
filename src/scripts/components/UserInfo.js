@@ -16,7 +16,7 @@ export class UserInfo {
   setUserInfo ({name, about, avatar, id}) {
     if (name) { this._name.textContent = name; };
     if (about) { this._profession.textContent = about; };
-    if (avatar) { this._avatar.src = avatar }; 
+    if (avatar) { this._avatar.setAttribute('style', `background-image: url('${avatar}')`)  }; 
     if (id) { this.userId = id };
   }
 

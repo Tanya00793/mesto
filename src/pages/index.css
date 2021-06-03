@@ -35,13 +35,14 @@
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);
 
-@import url(../blocks/modal/modal.css);
-@import url(../blocks/modal/_opened/modal_opened.css);
-@import url(../blocks/modal/__close-button/modal__close-button.css);
-@import url(../blocks/modal/__content/modal__content.css);
-@import url(../blocks/modal/__title/modal__title.css);
+@import url(../blocks/popup/popup.css);
+@import url(../blocks/popup/_opened/popup_opened.css);
+@import url(../blocks/popup/__close-button/popup__close-button.css);
+@import url(../blocks/popup/__content/popup__content.css);
+@import url(../blocks/popup/__title/popup__title.css);
 
 @import url(../blocks/form/form.css);
+@import url(../blocks/form/_type/form_type_delete-card.css);
 @import url(../blocks/form/__section/form__section.css);
 @import url(../blocks/form/__input/form__input.css);
 @import url(../blocks/form/__input-error/form__input-error.css);
@@ -50,8 +51,9 @@
 @import url(../blocks/form/__submit-button/_active/form__submit-button_active.css);
 @import url(../blocks/form/__submit-button/_disabled/form__submit-button_disabled.css);
 @import url(../blocks/form/__submit-button/_type/form__submit-button_type_edit-avatar.css);
+@import url(../blocks/form/__submit-button/_type/form__submit-button_type_delete-card.css);
 
-@import url(../blocks/modal-preview-card/modal-preview-card.css);
-@import url(../blocks/modal-preview-card/__content/modal-preview-card__content.css);
-@import url(../blocks/modal-preview-card/__image/modal-preview-card__image.css);
-@import url(../blocks/modal-preview-card/__title/modal-preview-card__title.css);
+@import url(../blocks/popup-preview-card/popup-preview-card.css);
+@import url(../blocks/popup-preview-card/__content/popup-preview-card__content.css);
+@import url(../blocks/popup-preview-card/__image/popup-preview-card__image.css);
+@import url(../blocks/popup-preview-card/__title/popup-preview-card__title.css);

@@ -3,26 +3,27 @@ import "./index.css"
 import { Section } from '../scripts/components/Section';
 import { Card } from '../scripts/components/Card.js';
 import { FormValidator } from '../scripts/components/FormValidator.js';
-import { ModalWithImage } from '../scripts/components/ModalWithImage.js';
-import { ModalWithForm } from '../scripts/components/ModalWithForm.js';
-import { ModalWithConfirm } from '../scripts/components/ModalWithConfirm.js';
+import { PopupWithImage } from '../scripts/components/PopupWithImage.js';
+import { PopupWithForm } from '../scripts/components/PopupWithForm.js';
+import { PopupWithConfirm } from '../scripts/components/PopupWithConfirm.js';
 import { UserInfo } from '../scripts/components/UserInfo.js';
 import { Api } from '../scripts/components/Api.js';
 
 import {
-  avatarElement,
-  modalEditProfileForm,
-  modalEditProfileOpenBtn,
-  modalEditAvatarForm,
-  modalEditAvatarOpenBtn,
-  modalAddCardForm,
-  modalAddCardOpenBtn,
+  popupEditProfileForm,
+  popupEditProfileOpenBtn,
+  popupEditAvatarForm,
+  popupEditAvatarOpenBtn,
+  popupAddCardForm,
+  popupAddCardOpenBtn,
   nameInput,
   professionInput,
   dataForCardsTemplate,
   vConfig,
-  cardTemplateSelector
+  cardTemplateSelector,
 } from '../scripts/utils/constants.js';
+
+let user;
 
 //---------------------------------------------------------------
 
@@ -32,18 +33,18 @@ const api = new Api ({
   cohortId: 'cohort-24',
 })
 
-let user = null;
-
 const userInfo = new UserInfo('.profile__name', '.profile__profession', '.profile__avatar');
 
 Promise.all([
   api.getUserInfo(),
   api.getInitialCards()
-]).then(([userData, cards]) => {
-  user = userData.data,
+])
+.then(([userData, cards]) => {
+  user = userData._id,
   setInitialUserData(userData),
   renderInitialCards (cards)
 })
+.catch(console.error);
 
 function setInitialUserData(userData) {
   userInfo.setUserInfo({
@@ -52,11 +53,6 @@ function setInitialUserData(userData) {
     avatar: userData.avatar,
     id: userData._id
   });
-  avatarElement.setAttribute('style', `background-image: url('${userData.avatar}')`)
-}
-
-function renderInitialCards (cards) {
-  photoGridSection.renderItems(cards);
 }
 
 function createCard (cardData) {
@@ -66,24 +62,8 @@ function createCard (cardData) {
     user,
     cardTemplateSelector,
     cardImageClickHandler,
-    cardDeleteButtonClickHandler,
-    {handleLikeClick: (card => {
-      if (card.classList.contains('card__like-button_active')) {
-          api.cancelLikeCard(card.id).then(result => {
-              card.querySelector('.card__like-button')
-                .classList.add('card__like-button_active');
-              card.querySelector('.card__likes')
-                .textContent = result.likes.length;
-        })
-      } else {
-        api.cancelLikeCard(card.id).then(result => {
-            card.querySelector('.card__like-button')
-              .classList.add('card__like-button_active');
-            card.querySelector('.card__likes')
-              .textContent = result.likes.length;
-      })
-     }
-    })}
+    deleteCardClickHandler,
+    likeClickHandler
   )
   return card.renderCard();
 }
@@ -96,87 +76,103 @@ const photoGridSection = new Section({
   }
 },'.photo-grid');
 
-const modalProfileEditSubmitHandler = (inputsData) => {
-  api.updateUserInfo({
-    name: inputsData.nameInput, 
-    about: inputsData.professionInput
-  }).then((inputsDataUpdated) => {
-    userInfo.setUserInfo(inputsDataUpdated);
-  })
+function renderInitialCards (cards) {
+  photoGridSection.renderItems(cards);
 }
 
-const modalAvatarEditSubmitHandler = (inputData) => {
-api.updateAvatar({
-        avatar: inputData.link
-      }).then(Response => {
-          setInitialUserData(Response);
-    })
-}
-
-function cardDeleteButtonClickHandler(card) {
-  modalWithDeleteCardConfirmationForm.openModal(card)
+function deleteCardClickHandler(card) {
+  popupWithConfirmationForm.openPopup(card)
 }
 
 function cardImageClickHandler (title, link) {
-  modalWithImage.openModal(title, link);
+  popupWithImage.openPopup(title, link);
 }
 
-function modalAddCardSubmitHandler (inputsData) {
-  api.addNewCard(inputsData).then((card) => {
+function likeClickHandler (card) {
+  api.likeCard(card.getId(), card.getIsLiked())
+    .then(response => { card.updateLikes(response.likes) })
+}
+
+const editProfileSubmitHandler = (inputsData) => {
+  api.updateUserInfo({
+    name: inputsData.nameInput, 
+    about: inputsData.professionInput
+  })
+  .then((inputsDataUpdated) => {
+    userInfo.setUserInfo(inputsDataUpdated);
+    popupWithEditProfileForm.closePopup();
+  })
+  .catch(console.error);
+}
+
+const editAvatarSubmitHandler = (inputData) => {
+  api.updateAvatar({ avatar: inputData.link })
+  .then(Response => {
+    setInitialUserData(Response);
+    popupWithEditAvatarForm.closePopup();
+  })
+  .catch(console.error);
+}
+
+function addCardSubmitHandler (inputsData) {
+  api.addNewCard(inputsData)
+  .then((card) => {
     const newCard = createCard(card);
     photoGridSection.addItem(newCard);
+    popupWithAddCardForm.closePopup();
   })
+  .catch(console.error);
 }
 
-const modalWithImage = new ModalWithImage('.modal-preview-card');
-modalWithImage.setEventListeners();
+function confirmDeletingSubmitHandler () {
+  const card = popupWithDeleteCardConfirmationForm.getId();
+  api.deleteCard (card.id)
+  .then(() => {
+    card.remove();
+    popupWithDeleteCardConfirmationForm.closePopup();
+  })
+  .catch(console.error);
+}
 
-const validationEditProfile = new FormValidator(vConfig, modalEditProfileForm);
+const validationEditProfile = new FormValidator(vConfig, popupEditProfileForm);
 validationEditProfile.enableValidation();
 
-const validationEditAvatar = new FormValidator(vConfig, modalEditAvatarForm);
+const validationEditAvatar = new FormValidator(vConfig, popupEditAvatarForm);
 validationEditAvatar.enableValidation();
 
-const validationAddCard = new FormValidator(vConfig, modalAddCardForm);
+const validationAddCard = new FormValidator(vConfig, popupAddCardForm);
 validationAddCard.enableValidation();
 
-const modalWithAddCardForm = new ModalWithForm ('.modal-add-card', 
-modalAddCardSubmitHandler);
-modalWithAddCardForm.setEventListeners();
+const popupWithImage = new PopupWithImage('.popup-preview-card');
+popupWithImage.setEventListeners();
 
-const modalWithEditProfileForm = new ModalWithForm ('.modal-edit-profile', 
-modalProfileEditSubmitHandler);
-modalWithEditProfileForm.setEventListeners();
+const popupWithEditProfileForm = new PopupWithForm ('.popup-edit-profile', 
+editProfileSubmitHandler);
+popupWithEditProfileForm.setEventListeners();
 
-const modalWithEditAvatarForm = new ModalWithForm ('.modal-edit-avatar', 
-modalAvatarEditSubmitHandler);
-modalWithEditAvatarForm.setEventListeners();
+const popupWithEditAvatarForm = new PopupWithForm ('.popup-edit-avatar', 
+editAvatarSubmitHandler);
+popupWithEditAvatarForm.setEventListeners();
 
-const modalWithDeleteCardConfirmationForm = new ModalWithConfirm ('.modal-delete-card', 
-{
-  submitHandler: () => {
-    const card = modalWithDeleteCardConfirmationForm.getId();
-    api.deleteCard (card.id)
-    .then(() => card.remove())
-    .catch(e => console.log('Ошибка при удалении'))
-  }
-});
-modalWithDeleteCardConfirmationForm.setEventListeners();
+const popupWithAddCardForm = new PopupWithForm ('.popup-add-card', 
+addCardSubmitHandler);
+popupWithAddCardForm.setEventListeners();
 
+const popupWithConfirmationForm = new PopupWithConfirm ('.popup-delete-card', 
+confirmDeletingSubmitHandler);
+popupWithConfirmationForm.setEventListeners();
 
-//---------------------------------------------------------------
-
-modalEditProfileOpenBtn.addEventListener('click', () => {
-  modalWithEditProfileForm.openModal();
+popupEditProfileOpenBtn.addEventListener('click', () => {
+  popupWithEditProfileForm.openPopup();
   const data = userInfo.getUserInfo();
   nameInput.value = data.name;
   professionInput.value = data.profession;
 })
 
-modalEditAvatarOpenBtn.addEventListener('click', () => {
-  modalWithEditAvatarForm.openModal();
+popupEditAvatarOpenBtn.addEventListener('click', () => {
+  popupWithEditAvatarForm.openPopup();
 })
 
-modalAddCardOpenBtn.addEventListener('click', () => {
-  modalWithAddCardForm.openModal();
+popupAddCardOpenBtn.addEventListener('click', () => {
+  popupWithAddCardForm.openPopup();
 })
